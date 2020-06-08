@@ -17,6 +17,7 @@ namespace BigSchool1.Controllers
             _dbContext = new ApplicationDbContext();
         }
         // GET: Courses
+        [Authorize]
         public ActionResult Create()
         {
             var viewModel = new CourseViewModel
@@ -27,6 +28,7 @@ namespace BigSchool1.Controllers
         }
         [Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create (CourseViewModel viewModel)
         {
             if(!ModelState.IsValid)
